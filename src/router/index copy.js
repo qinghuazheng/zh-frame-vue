@@ -1,11 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Home from '../views/Home.vue'
+import Login from '../views/Login.vue'
+import Dashboard from '../views/Dashboard.vue'
+import UserCreate from '../views/UserCreate.vue'
+import User from '../views/User.vue'
+import Error from '../views/Error.vue'
 import Layout from '../views/Layout.vue'
 import store from '../store'
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
+console.log('0000000');
 Vue.use(VueRouter)
 
 const routes = [{
@@ -13,13 +20,13 @@ const routes = [{
     redirect:'/login'
   },{
     path: '/login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
+    component:Login
   },{
     path:'/main',
     component:Layout,
     children:[{
       path:'index',
-      component:()=> import(/* webpackChunkName: "about" */ '../views/Dashboard.vue')
+      component:Dashboard
     // },{
     //     path:'user/create',
     //     component:()=> import(/* webpackChunkName: "about" */ '../views/UserCreate.vue')
@@ -29,7 +36,7 @@ const routes = [{
     }]
   },{
       path:'*',
-      component: () => import(/* webpackChunkName: "Error" */ '../views/Error.vue')
+      component: Error
   }
 ]
 
@@ -40,8 +47,8 @@ const router = new VueRouter({
 // 用户不具备权限的路由是否应该压根儿就不存在
 // 动态路由的使用
 
-const userCreateRule = {path:'user/create',component:()=> import(/* webpackChunkName: "about" */ '../views/UserCreate.vue')};
-const userListRule = {path:'user/list',component: () => import(/* webpackChunkName: "userlist" */ '../views/User.vue')};
+const userCreateRule = {path:'user/create',component:UserCreate};
+const userListRule = {path:'user/list',component:User};
 
 const ruleMapping = {
     'user/create': userCreateRule,

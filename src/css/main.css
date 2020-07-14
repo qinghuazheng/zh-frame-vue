@@ -1,0 +1,57 @@
+.mian-layout{
+    height: 100%;
+}
+.main-section{
+    flex-direction: column;
+}
+.main-aside{
+    width: 300px;
+    background: #262A39;
+}
+.aside-header{
+    padding-left: 20px;
+    height: 56px;
+    line-height: 56px;
+    font-size: 16px;
+    color: #fff;
+}
+.main-aside .el-menu{
+    /* background-color: inherit; */
+    border-right:none
+}
+.main-aside .el-menu-item.is-active, .main-aside .is-active .el-submenu__title{
+    color: #fff;
+    background-color: #1e1f2b;
+}
+.main-aside .el-menu-item.is-active:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #f0f;
+}
+.main-aside .el-menu-item, .main-aside .el-submenu__title{
+    color: hsla(0,0%,100%,.6);
+    background-color: #262A39;
+}
+.main-aside .el-menu-item:hover, .main-aside .el-submenu__title:hover{
+    color: #fff;
+}
+.main-aside .is-active.is-opened .el-submenu__title{
+    background-color: #262A39;
+}
+
+/* top-bar样式 */
+.main-header{
+    display: flex;
+    box-shadow: 0px 2px 3px rgba(0,0,0,0.1);
+    align-items: center;
+}
+.main-header .logo{
+    flex:1;
+}
+.main-header .operate{
+    width: 100px;
+    text-align: center;
+}
