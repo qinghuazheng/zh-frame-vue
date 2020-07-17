@@ -8,6 +8,7 @@ VueRouter.prototype.push = function push(location) {
 }
 Vue.use(VueRouter)
 
+
 const routes = [{
     path: '/',
     redirect:'/login'
@@ -19,7 +20,7 @@ const routes = [{
     component:Layout,
     children:[{
       path:'index',
-      component:()=> import(/* webpackChunkName: "about" */ '../views/Dashboard.vue')
+      component:()=> import(/* webpackChunkName: "Dashboard" */ '../views/Dashboard.vue')
     // },{
     //     path:'user/create',
     //     component:()=> import(/* webpackChunkName: "about" */ '../views/UserCreate.vue')
@@ -27,9 +28,9 @@ const routes = [{
     //   path:'user/list',
     //   component: () => import(/* webpackChunkName: "userlist" */ '../views/User.vue')
     }]
-  },{
-      path:'*',
-      component: () => import(/* webpackChunkName: "Error" */ '../views/Error.vue')
+  // },{
+  //     path:'*',
+  //     component: () => import(/* webpackChunkName: "Error" */ '../views/Error.vue')
   }
 ]
 
@@ -42,9 +43,11 @@ const router = new VueRouter({
 
 const userCreate = r => require(['../views/UserCreate.vue'],r);
 const userList = r => require(['../views/User.vue'],r);
+const error = r => require(['../views/Error.vue'],r);
 
 const userCreateRule = {path:'user/create',component:userCreate};
 const userListRule = {path:'user/list',component: userList};
+const errorRule = {path:'user/list',component: error};
 
 
 // const userCreateRule = {path:'user/create',component:()=> import(/* webpackChunkName: "about" */ '../views/UserCreate.vue')};
@@ -83,9 +86,10 @@ export function initDynamicRoutes(){
             currentRoutes[2].children.push(temp);    
         })
     })
+    currentRoutes.push(errorRule);
     // currentRoutes[2].children.push();
     router.addRoutes(currentRoutes)
-    // console.log('router:',router,store);
+    console.log('router:',router,store);
 }
 
 export default router
