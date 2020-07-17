@@ -6,9 +6,9 @@ import ajax from './ajax'
 const baseUrl = ''
 
 export function reqLogin(username,password){
-    ajax({
+    return ajax({
         method:'post',
-        url:`${baseUrl}/login`,
+        url:'/login',
         data:{
             username,
             password
@@ -16,4 +16,9 @@ export function reqLogin(username,password){
     })
 }
 
-reqLogin('admin','admin')
+export function getuser(){
+    return ajax({
+        method:'get',
+        url:'/user/getUser'
+    })
+}

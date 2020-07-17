@@ -18,6 +18,21 @@
 
 <script>
 import {initDynamicRoutes} from '@/router'
+import {reqLogin,getuser} from './../api/index'
+const menuList = [{
+    id:1,
+    authName:'用户管理',
+    icon:'icon-user',
+    children:[{
+        id:11,
+        authName:'新增用户',
+        path:'user/create'
+    },{
+        id:12,
+        authName:'用户列表',
+        path:'user/list'
+    }]
+}];
 export default {
     data(){
         return{
@@ -29,28 +44,16 @@ export default {
     },
     methods:{
         onSubmit(){
-            const menuList = [{
-                id:1,
-                authName:'用户管理',
-                icon:'icon-user',
-                children:[{
-                //     id:11,
-                //     authName:'新增用户',
-                //     path:'user/create'
-                // },{
-                    id:12,
-                    authName:'用户列表',
-                    path:'user/list'
-                }]
-            }];
-            const token = 'yqiueruqtwegkqhda';
-            this.$store.commit('setMenuList',menuList);
-            this.$store.commit('setUserName',this.loginForm.username);
-            sessionStorage.setItem('token',token);
-
-            // 根据用户所具备的权限，动态添加路由规则
-            initDynamicRoutes();
-            this.$router.push('main/index');
+            reqLogin(this.loginForm).then(res=>{
+                console.log(res)
+                const token = res.token;
+                sessionStorage.setItem('token',token);
+                this.$store.commit('setUserName',this.loginForm.username);
+                this.$store.commit('setMenuList',menuList);
+                // 根据用户所具备的权限，动态添加路由规则 
+                initDynamicRoutes();
+                this.$router.push('main/index');
+            })
         }
     }
 }

@@ -1,7 +1,13 @@
 <template>
   <!-- <header class="main-header">头部</header> -->
   <el-header class="main-header">
-    <div class="logo"></div>
+    <div class="logo">
+        <!-- <a href="/main/index"> -->
+        <router-link to="/main/index">
+            <i class="frame el-icon-s-home"></i>
+        </router-link>
+        <!-- </a> -->
+    </div>
     <el-dropdown @command="handleCommand" class="operate">
         <span>{{userName}}</span>
         <el-dropdown-menu slot="dropdown">

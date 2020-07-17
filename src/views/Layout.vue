@@ -3,9 +3,12 @@
         <side-bar :menuList="menuList" class="main-aside"></side-bar>
         <el-container class="main-section">
             <top-bar></top-bar>
-            <el-main>
-                <router-view></router-view>
-            </el-main>
+            <!-- <el-main class="main-content"> -->
+                <section class="main-content">
+                    <router-view></router-view>
+                </section>
+                
+            <!-- </el-main> -->
         </el-container>
     </el-container>
 </template>

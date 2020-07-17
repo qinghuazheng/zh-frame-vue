@@ -40,8 +40,15 @@ const router = new VueRouter({
 // 用户不具备权限的路由是否应该压根儿就不存在
 // 动态路由的使用
 
-const userCreateRule = {path:'user/create',component:()=> import(/* webpackChunkName: "about" */ '../views/UserCreate.vue')};
-const userListRule = {path:'user/list',component: () => import(/* webpackChunkName: "userlist" */ '../views/User.vue')};
+const userCreate = r => require(['../views/UserCreate.vue'],r);
+const userList = r => require(['../views/User.vue'],r);
+
+const userCreateRule = {path:'user/create',component:userCreate};
+const userListRule = {path:'user/list',component: userList};
+
+
+// const userCreateRule = {path:'user/create',component:()=> import(/* webpackChunkName: "about" */ '../views/UserCreate.vue')};
+// const userListRule = {path:'user/list',component: () => import(/* webpackChunkName: "userlist" */ '../views/User.vue')};
 
 const ruleMapping = {
     'user/create': userCreateRule,
@@ -52,7 +59,7 @@ const ruleMapping = {
 // 防止用户跳过登录界面对其他页面进行访问
 router.beforeEach((to,from,next)=>{
     const token = sessionStorage.getItem('token');
-    console.log(to,from);
+    // console.log(to,from);
     if(to.path==='/login'){
         next();
     }else{
@@ -78,7 +85,7 @@ export function initDynamicRoutes(){
     })
     // currentRoutes[2].children.push();
     router.addRoutes(currentRoutes)
-    console.log('router:',router,store);
+    // console.log('router:',router,store);
 }
 
 export default router

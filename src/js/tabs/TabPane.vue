@@ -14,7 +14,7 @@ export default {
     },
     props:['label','name'],
     mounted(){
-        console.log(this.$parent);
+        // console.log(this.$parent);
         
     }
 }
