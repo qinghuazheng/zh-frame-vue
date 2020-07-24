@@ -29,3 +29,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 描述项目的开发方式 主要是通过简单的命令就能对我们的项目进行编译打包运行，而且能够检测我们对项目的修改，进行重新编译打包运行，还能对我们的代码规范进行代码检查、提示
 
 脚手架创建的项目就是一个工程化项目
+
+### search组件 tabulation组件 pagenation组件

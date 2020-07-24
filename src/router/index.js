@@ -89,7 +89,7 @@ export function initDynamicRoutes(){
     currentRoutes.push(errorRule);
     // currentRoutes[2].children.push();
     router.addRoutes(currentRoutes)
-    console.log('router:',router,store);
+    // console.log('router:',router,store);
 }
 
 export default router

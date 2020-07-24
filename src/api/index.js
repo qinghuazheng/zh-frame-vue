@@ -16,9 +16,17 @@ export function reqLogin(username,password){
     })
 }
 
-export function getuser(){
+export function getuser(params){
     return ajax({
         method:'get',
-        url:'/user/getUser'
+        url:'/user/getUser',
+        params
+    })
+}
+
+export function getGoods(){
+    return ajax({
+        method:'get',
+        url:'/goods'
     })
 }

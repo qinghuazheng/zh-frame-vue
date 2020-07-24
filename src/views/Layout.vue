@@ -29,7 +29,7 @@ export default {
         ...mapState(['menuList'])
     },
     created(){
-        console.log(this.menuList);
+        // console.log(this.menuList);
         // this.menuList = this.menuList;
     }
 }
